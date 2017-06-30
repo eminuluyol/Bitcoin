@@ -3,9 +3,11 @@
 buildscript {
     repositories {
         jcenter()
+        mavenCentral()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'me.tatarka:gradle-retrolambda:3.5.0'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -15,7 +17,24 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+        maven { url 'https://maven.google.com' }
     }
+}
+
+ext {
+    compileSdkVersion = 25
+    minSdkVersion = 19
+    targetSdkVersion = 25
+    buildToolsVersion = "25.0.2"
+    supportLibVersion = "25.3.1"
+    firebaseVersion = "10.0.1"
+    ankoVersion = "0.10.0"
+    archVersion = '1.0.0-alpha1'
+
+    versionCode = 1
+    versionName = "1.0.0"
 }
 
 task clean(type: Delete) {
