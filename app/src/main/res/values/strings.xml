@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Bitcoin</string>
     <string name="empty_generic_text">NO DATA</string>
+
+    <!-- Curren Price -->
+    <string name="currency_code">Currency Code:</string>
+    <string name="name">Name:</string>
+    <string name="rate">Rate:</string>
 </resources>

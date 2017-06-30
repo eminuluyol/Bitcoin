@@ -18,6 +18,24 @@ public class Rate implements Parcelable {
     @Expose
     private String name;
 
+    protected Rate(Parcel in) {
+        currencyCode = in.readString();
+        rate = in.readString();
+        name = in.readString();
+    }
+
+    public static final Creator<Rate> CREATOR = new Creator<Rate>() {
+        @Override
+        public Rate createFromParcel(Parcel in) {
+            return new Rate(in);
+        }
+
+        @Override
+        public Rate[] newArray(int size) {
+            return new Rate[size];
+        }
+    };
+
     public String getCurrencyCode() {
         return currencyCode;
     }
@@ -49,6 +67,8 @@ public class Rate implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-
+        parcel.writeString(currencyCode);
+        parcel.writeString(rate);
+        parcel.writeString(name);
     }
 }
