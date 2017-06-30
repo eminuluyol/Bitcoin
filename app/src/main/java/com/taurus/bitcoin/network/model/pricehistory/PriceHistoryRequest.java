@@ -6,7 +6,8 @@ public class PriceHistoryRequest extends BaseRequest {
 
     private String market;
     private String symbol;
-    private int timestamp;
+    private String period;
+    private String format;
 
     public String getMarket() {
         return market;
@@ -24,11 +25,19 @@ public class PriceHistoryRequest extends BaseRequest {
         this.symbol = symbol;
     }
 
-    public int getTimestamp() {
-        return timestamp;
+    public void setPeriod(String period) {
+        this.period = period;
     }
 
-    public void setTimestamp(int timestamp) {
-        this.timestamp = timestamp;
+    public void setFormat(String format) {
+        this.format = format;
+    }
+
+    public String getPeriod() {
+        return period;
+    }
+
+    public String getFormat() {
+        return format;
     }
 }

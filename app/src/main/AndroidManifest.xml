@@ -31,6 +31,14 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait"/>
 
+        <activity
+            android:name=".pricehistory.PriceHistoryActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".currentprice.CurrentPriceActivity" />
+        </activity>
+
     </application>
 
 </manifest>

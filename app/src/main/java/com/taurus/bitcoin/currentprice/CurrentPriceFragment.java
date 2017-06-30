@@ -34,7 +34,7 @@ public class CurrentPriceFragment extends BaseFragment<CurrentPriceView, Current
     @BindView(R.id.emptyView)
     NestedScrollView emptyView;
 
-    private RecyclerAdapter currenPriceListAdapter;
+    private RecyclerAdapter currentPriceListAdapter;
 
     public static CurrentPriceFragment newInstance(List<Rate> rateList) {
 
@@ -68,9 +68,9 @@ public class CurrentPriceFragment extends BaseFragment<CurrentPriceView, Current
             List<GenericItem> rateUIList = new ArrayList<>(RateUIModel.createList(rateList));
 
             currentPriceRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            currenPriceListAdapter = RecyclerAdapter.with(new CurrentPriceAdapterDelegate(this));
-            currentPriceRecyclerView.setAdapter(currenPriceListAdapter);
-            currenPriceListAdapter.swapItems(rateUIList);
+            currentPriceListAdapter = RecyclerAdapter.with(new CurrentPriceAdapterDelegate(this));
+            currentPriceRecyclerView.setAdapter(currentPriceListAdapter);
+            currentPriceListAdapter.swapItems(rateUIList);
 
         }
     }
@@ -95,6 +95,9 @@ public class CurrentPriceFragment extends BaseFragment<CurrentPriceView, Current
 
     @Override
     public void onItemClick(View view) {
+
+        RateUIModel rateUIModel = (RateUIModel) view.getTag();
+        getPresenter().onRateHistoryRequested(rateUIModel);
 
     }
 }

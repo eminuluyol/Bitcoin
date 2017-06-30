@@ -2,11 +2,14 @@
     <string name="app_name">Bitcoin</string>
     <string name="empty_generic_text">NO DATA</string>
 
-    <!-- Curren Price -->
+    <!-- Current Price -->
     <string name="currency_code">Currency Code:</string>
     <string name="name">Name:</string>
     <string name="rate">Rate:</string>
     <string name="current_price_title">Current Price</string>
+
+    <!-- Price History -->
     <string name="time">Time:</string>
     <string name="average">Avarage:</string>
+    <string name="price_history_title">Price History</string>
 </resources>

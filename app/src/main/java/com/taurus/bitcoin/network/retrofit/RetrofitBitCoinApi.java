@@ -75,6 +75,7 @@ public class RetrofitBitCoinApi implements BitCoinApi {
     public Observable<List<History>> getCurrencyHistorySince(PriceHistoryRequest request) {
 
         BitCoinService endpoints = APIRestClient.getInstanceRx().create(BitCoinService.class);
-        return endpoints.getCurrencyHistorySince(request.getMarket(), request.getSymbol(), request.getTimestamp());
+        return endpoints.getCurrencyHistorySince(request.getMarket(), request.getSymbol(),
+                request.getPeriod(), request.getFormat());
     }
 }

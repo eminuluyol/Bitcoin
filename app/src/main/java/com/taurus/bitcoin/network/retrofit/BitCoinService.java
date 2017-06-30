@@ -19,6 +19,7 @@ public interface BitCoinService {
     Observable<List<History>> getCurrencyHistorySince(
             @Path("market") String market,
             @Path("symbol") String symbol,
-            @Query("since") int since
+            @Query("period") String period,
+            @Query("format") String format
     );
 }
