@@ -6,11 +6,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.taurus.bitcoin.R;
+import com.taurus.bitcoin.baseadapter.model.GenericItem;
 import com.taurus.bitcoin.core.BaseFragment;
 import com.taurus.bitcoin.core.BaseSimpleActivity;
-import com.taurus.bitcoin.currentprice.CurrentPriceActivity;
-import com.taurus.bitcoin.currentprice.CurrentPriceFragment;
-import com.taurus.bitcoin.currentprice.adapter.model.RateUIModel;
 import com.taurus.bitcoin.network.model.currentprice.Rate;
 
 import java.util.ArrayList;
@@ -18,13 +16,13 @@ import java.util.List;
 
 public class PriceHistoryActivity extends BaseSimpleActivity {
 
-    private static final String EXTRA_RATE = "rate";
-    private List<RateUIModel> rateList;
+    private static final String EXTRA_RATE_HISTORY = "rate_history";
+    private List<GenericItem> rateHistoryList;
 
     public static Intent newIntent(Context context, List<Rate> rateList) {
 
         Intent intent = new Intent(context, PriceHistoryActivity.class);
-        intent.putParcelableArrayListExtra(PriceHistoryActivity.EXTRA_RATE, new ArrayList<>(rateList));
+        intent.putParcelableArrayListExtra(PriceHistoryActivity.EXTRA_RATE_HISTORY, new ArrayList<>(rateList));
 
         return intent;
     }
@@ -41,7 +39,7 @@ public class PriceHistoryActivity extends BaseSimpleActivity {
     @Nullable
     @Override
     protected BaseFragment getContainedFragment() {
-        return PriceHistoryFragment.newInstance(rateList);
+        return PriceHistoryFragment.newInstance(rateHistoryList);
     }
 
     private void getBundleArguments() {
@@ -49,7 +47,7 @@ public class PriceHistoryActivity extends BaseSimpleActivity {
         Intent extras = getIntent();
 
         if (extras != null) {
-            rateList = extras.getParcelableArrayListExtra(PriceHistoryActivity.EXTRA_RATE);
+            rateHistoryList = extras.getParcelableArrayListExtra(PriceHistoryActivity.EXTRA_RATE_HISTORY);
         }
 
     }

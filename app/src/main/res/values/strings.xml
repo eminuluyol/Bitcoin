@@ -7,4 +7,6 @@
     <string name="name">Name:</string>
     <string name="rate">Rate:</string>
     <string name="current_price_title">Current Price</string>
+    <string name="time">Time:</string>
+    <string name="average">Avarage:</string>
 </resources>
