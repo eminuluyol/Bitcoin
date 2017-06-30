@@ -35,7 +35,7 @@ public class PriceHistoryActivity extends BaseSimpleActivity {
         getBundleArguments();
         super.onCreate(savedInstanceState);
 
-        setTitle(currencyCode + " " + R.string.price_history_title);
+        setTitle(getResources().getString(R.string.price_history_title, currencyCode));
 
     }
 

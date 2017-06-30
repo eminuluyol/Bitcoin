@@ -11,5 +11,5 @@
     <!-- Price History -->
     <string name="time">Time:</string>
     <string name="average">Avarage:</string>
-    <string name="price_history_title">Price History</string>
+    <string name="price_history_title">%1$s Price History</string>
 </resources>
