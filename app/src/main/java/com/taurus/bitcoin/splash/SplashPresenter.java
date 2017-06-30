@@ -51,12 +51,12 @@ public class SplashPresenter extends BasePresenter<SplashView> {
         onProgressBarHide();
 
         List<Rate> rateList = rateWrapper.getRateList();
-        onCurrenPriceActivityRequested(rateList);
+        onCurrentPriceActivityRequested(rateList);
 
     }
 
-    private void onCurrenPriceActivityRequested(List<Rate> rateList) {
-
+    private void onCurrentPriceActivityRequested(List<Rate> rateList) {
+        getNavigator().toCurrentPriceActivity(rateList).clearBackStack().navigate();
     }
 
     private void handleError(Throwable throwable) {
