@@ -28,6 +28,8 @@ import android.widget.TextView;
 
 import com.hannesdorfmann.mosby.mvp.MvpActivity;
 import com.taurus.bitcoin.R;
+import com.taurus.bitcoin.core.dialog.ProgressDialogFragment;
+import com.taurus.bitcoin.core.dialog.ProgressDialogFragmentBuilder;
 import com.taurus.bitcoin.core.injection.Injector;
 
 import java.util.Arrays;

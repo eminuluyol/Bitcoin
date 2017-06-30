@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.hannesdorfmann.fragmentargs.annotation.Arg;
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
-import com.taurus.carpooling.R;
+import com.taurus.bitcoin.R;
 
 import butterknife.BindView;
 

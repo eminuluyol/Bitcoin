@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import com.hannesdorfmann.fragmentargs.FragmentArgs;
 import com.hannesdorfmann.mosby.mvp.MvpFragment;
 import com.taurus.bitcoin.R;
+import com.taurus.bitcoin.core.dialog.ProgressDialogFragment;
+import com.taurus.bitcoin.core.dialog.ProgressDialogFragmentBuilder;
 
 import butterknife.ButterKnife;
 

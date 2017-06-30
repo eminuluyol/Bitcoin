@@ -11,10 +11,4 @@
         <item name="cardElevation">@dimen/list_card_elevation</item>
     </style>
 
-    <style name="EditTextViewStyle" parent="Base.V7.Widget.AppCompat.EditText">
-        <item name="android:padding">@dimen/space_edit_text</item>
-        <item name="android:textColor">@color/gray</item>
-        <item name="android:background">@drawable/rounded_edittext</item>
-    </style>
-
 </resources>
