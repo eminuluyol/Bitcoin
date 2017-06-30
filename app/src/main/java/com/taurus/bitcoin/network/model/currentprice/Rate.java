@@ -1,4 +1,4 @@
-package com.taurus.bitcoin.network.model;
+package com.taurus.bitcoin.network.model.currentprice;
 
 import android.os.Parcel;
 import android.os.Parcelable;

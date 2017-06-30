@@ -2,9 +2,9 @@ package com.taurus.bitcoin.splash;
 
 import com.taurus.bitcoin.core.BasePresenter;
 import com.taurus.bitcoin.core.injection.Injector;
-import com.taurus.bitcoin.network.model.CurrentPriceRequest;
-import com.taurus.bitcoin.network.model.Rate;
-import com.taurus.bitcoin.network.model.RateWrapper;
+import com.taurus.bitcoin.network.model.currentprice.CurrentPriceRequest;
+import com.taurus.bitcoin.network.model.currentprice.Rate;
+import com.taurus.bitcoin.network.model.currentprice.RateWrapper;
 
 import java.util.List;
 

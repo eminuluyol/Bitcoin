@@ -8,7 +8,7 @@ import android.support.annotation.Nullable;
 import com.taurus.bitcoin.R;
 import com.taurus.bitcoin.core.BaseFragment;
 import com.taurus.bitcoin.core.BaseSimpleActivity;
-import com.taurus.bitcoin.network.model.Rate;
+import com.taurus.bitcoin.network.model.currentprice.Rate;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.taurus.bitcoin.currentprice.adapter.model;
 
 import com.taurus.bitcoin.baseadapter.model.GenericItem;
-import com.taurus.bitcoin.network.model.Rate;
+import com.taurus.bitcoin.network.model.currentprice.Rate;
 import com.taurus.bitcoin.util.ListConverter;
 
 import java.util.List;

@@ -15,7 +15,7 @@ import com.taurus.bitcoin.core.BaseFragment;
 import com.taurus.bitcoin.currentprice.adapter.delegate.CurrentPriceAdapterDelegate;
 import com.taurus.bitcoin.currentprice.adapter.model.RateUIModel;
 import com.taurus.bitcoin.listener.OnItemClickListener;
-import com.taurus.bitcoin.network.model.Rate;
+import com.taurus.bitcoin.network.model.currentprice.Rate;
 
 import java.util.ArrayList;
 import java.util.List;

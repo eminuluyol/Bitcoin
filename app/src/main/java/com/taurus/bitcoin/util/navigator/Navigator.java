@@ -3,7 +3,7 @@ package com.taurus.bitcoin.util.navigator;
 import android.app.Activity;
 
 import com.taurus.bitcoin.currentprice.CurrentPriceActivity;
-import com.taurus.bitcoin.network.model.Rate;
+import com.taurus.bitcoin.network.model.currentprice.Rate;
 
 import java.util.List;
 

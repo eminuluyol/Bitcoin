@@ -1,4 +1,6 @@
-package com.taurus.bitcoin.network.model;
+package com.taurus.bitcoin.network.model.currentprice;
+
+import com.taurus.bitcoin.network.model.BaseRequest;
 
 public class CurrentPriceRequest extends BaseRequest {
 

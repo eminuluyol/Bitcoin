@@ -8,9 +8,11 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.taurus.bitcoin.network.BitCoinApi;
-import com.taurus.bitcoin.network.model.CurrentPriceRequest;
-import com.taurus.bitcoin.network.model.Rate;
-import com.taurus.bitcoin.network.model.RateWrapper;
+import com.taurus.bitcoin.network.model.currentprice.CurrentPriceRequest;
+import com.taurus.bitcoin.network.model.currentprice.Rate;
+import com.taurus.bitcoin.network.model.currentprice.RateWrapper;
+import com.taurus.bitcoin.network.model.pricehistory.History;
+import com.taurus.bitcoin.network.model.pricehistory.PriceHistoryRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -67,5 +69,12 @@ public class RetrofitBitCoinApi implements BitCoinApi {
         BitCoinService endpoints = APIRestClient.getInstanceRx(gson).create(BitCoinService.class);
 
         return endpoints.getCurrentRates(currentPriceRequest.getMarket());
+    }
+
+    @Override
+    public Observable<List<History>> getCurrencyHistorySince(PriceHistoryRequest request) {
+
+        BitCoinService endpoints = APIRestClient.getInstanceRx().create(BitCoinService.class);
+        return endpoints.getCurrencyHistorySince(request.getMarket(), request.getSymbol(), request.getTimestamp());
     }
 }

@@ -1,4 +1,4 @@
-package com.taurus.bitcoin.network.model;
+package com.taurus.bitcoin.network.model.currentprice;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
