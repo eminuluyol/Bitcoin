@@ -1,10 +1,8 @@
 package com.taurus.bitcoin.splash;
 
-import android.util.Log;
-
 import com.taurus.bitcoin.core.BasePresenter;
 import com.taurus.bitcoin.core.injection.Injector;
-import com.taurus.bitcoin.network.model.BaseRequest;
+import com.taurus.bitcoin.network.model.CurrentPriceRequest;
 import com.taurus.bitcoin.network.model.Rate;
 import com.taurus.bitcoin.network.model.RateWrapper;
 
@@ -14,6 +12,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 public class SplashPresenter extends BasePresenter<SplashView> {
+
+    private final String MARKET = "local";
 
     SplashPresenter() {
         Injector.getInstance().getActivityComponent().inject(this);
@@ -37,7 +37,7 @@ public class SplashPresenter extends BasePresenter<SplashView> {
 
     void onCurrentRatesRequested() {
 
-        BaseRequest request = new BaseRequest();
+        CurrentPriceRequest request = new CurrentPriceRequest(MARKET);
 
         getApi().getCurrentRates(request)
                 .subscribeOn(Schedulers.newThread())
@@ -51,13 +51,18 @@ public class SplashPresenter extends BasePresenter<SplashView> {
         onProgressBarHide();
 
         List<Rate> rateList = rateWrapper.getRateList();
+        onCurrenPriceActivityRequested(rateList);
 
-        Log.i("Size", " " + rateList.size());
+    }
 
+    private void onCurrenPriceActivityRequested(List<Rate> rateList) {
 
     }
 
     private void handleError(Throwable throwable) {
+
+        onProgressBarHide();
+        getView().showError(throwable.getMessage());
 
     }
 }

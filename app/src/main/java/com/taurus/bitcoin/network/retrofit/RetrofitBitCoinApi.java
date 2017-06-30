@@ -8,7 +8,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.taurus.bitcoin.network.BitCoinApi;
-import com.taurus.bitcoin.network.model.BaseRequest;
+import com.taurus.bitcoin.network.model.CurrentPriceRequest;
 import com.taurus.bitcoin.network.model.Rate;
 import com.taurus.bitcoin.network.model.RateWrapper;
 
@@ -26,7 +26,7 @@ public class RetrofitBitCoinApi implements BitCoinApi {
     }
 
     @Override
-    public Observable<RateWrapper> getCurrentRates(BaseRequest request) {
+    public Observable<RateWrapper> getCurrentRates(CurrentPriceRequest currentPriceRequest) {
 
         final Type typeRateWrapper = new TypeToken<RateWrapper>() {
         }.getType();
@@ -66,6 +66,6 @@ public class RetrofitBitCoinApi implements BitCoinApi {
 
         BitCoinService endpoints = APIRestClient.getInstanceRx(gson).create(BitCoinService.class);
 
-        return endpoints.getCurrentRates();
+        return endpoints.getCurrentRates(currentPriceRequest.getMarket());
     }
 }

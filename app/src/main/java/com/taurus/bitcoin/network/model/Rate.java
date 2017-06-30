@@ -1,9 +1,12 @@
 package com.taurus.bitcoin.network.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Rate {
+public class Rate implements Parcelable {
 
     private String currencyCode;
 
@@ -39,4 +42,13 @@ public class Rate {
         this.name = name;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+
+    }
 }
