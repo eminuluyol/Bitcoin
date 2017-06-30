@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
 import com.taurus.bitcoin.network.BitCoinApi;
+import com.taurus.bitcoin.util.navigator.Navigator;
 
 import javax.inject.Inject;
 
@@ -17,6 +18,9 @@ public abstract class BasePresenter<V extends BaseView> extends MvpBasePresenter
     @Inject
     BitCoinApi api;
 
+    @Inject
+    Navigator navigator;
+
     protected CompositeDisposable compositeDisposable;
 
     public BasePresenter(){
@@ -29,6 +33,10 @@ public abstract class BasePresenter<V extends BaseView> extends MvpBasePresenter
 
     public BitCoinApi getApi() {
         return api;
+    }
+
+    public Navigator getNavigator() {
+        return navigator;
     }
 
     public void clearCompositeDisposable() {
