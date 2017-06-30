@@ -2,8 +2,10 @@ package com.taurus.bitcoin.currentprice;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import com.taurus.bitcoin.R;
 import com.taurus.bitcoin.core.BaseFragment;
 import com.taurus.bitcoin.core.BaseSimpleActivity;
 import com.taurus.bitcoin.network.model.Rate;
@@ -22,6 +24,15 @@ public class CurrentPriceActivity extends BaseSimpleActivity {
         intent.putParcelableArrayListExtra(CurrentPriceActivity.EXTRA_RATE, new ArrayList<>(rateList));
 
         return intent;
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        getBundleArguments();
+        super.onCreate(savedInstanceState);
+
+        setTitle(R.string.current_price_title);
+
     }
 
     @Nullable

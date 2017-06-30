@@ -18,6 +18,9 @@ public class Rate implements Parcelable {
     @Expose
     private String name;
 
+    public Rate() {
+    }
+
     protected Rate(Parcel in) {
         currencyCode = in.readString();
         rate = in.readString();

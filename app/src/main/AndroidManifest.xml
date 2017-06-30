@@ -26,6 +26,11 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".currentprice.CurrentPriceActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>
