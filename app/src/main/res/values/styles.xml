@@ -1,11 +1,20 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <!--CARD VIEW -->
+    <style name="CardViewStyle" parent="CardView">
+        <item name="android:layout_marginLeft">@dimen/space_small</item>
+        <item name="android:layout_marginRight">@dimen/space_small</item>
+        <item name="android:layout_marginTop">@dimen/space_small</item>
+        <item name="android:layout_marginBottom">@dimen/space_small</item>
+        <item name="cardBackgroundColor">@color/white</item>
+        <item name="cardUseCompatPadding">true</item>
+        <item name="cardElevation">@dimen/list_card_elevation</item>
+    </style>
+
+    <style name="EditTextViewStyle" parent="Base.V7.Widget.AppCompat.EditText">
+        <item name="android:padding">@dimen/space_edit_text</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:background">@drawable/rounded_edittext</item>
     </style>
 
 </resources>
