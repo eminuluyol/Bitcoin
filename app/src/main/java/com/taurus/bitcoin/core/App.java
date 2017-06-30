@@ -4,8 +4,6 @@ import android.app.Application;
 
 import com.taurus.bitcoin.core.injection.Injector;
 
-import net.danlew.android.joda.JodaTimeAndroid;
-
 public class App extends Application {
 
     @Override
@@ -13,8 +11,6 @@ public class App extends Application {
         super.onCreate();
 
         Injector.getInstance().createApplicationScope(this);
-
-        JodaTimeAndroid.init(this);
 
     }
 }
