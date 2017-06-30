@@ -16,12 +16,16 @@ import java.util.List;
 public class PriceHistoryActivity extends BaseSimpleActivity {
 
     private static final String EXTRA_RATE_HISTORY = "rate_history";
-    private List<GenericItem> rateHistoryList;
+    private static final String EXTRA_CURRENCY_CODE = "currency_code";
 
-    public static Intent newIntent(Context context, List<GenericItem> rateHistoryList) {
+    private List<GenericItem> rateHistoryList;
+    private String currencyCode;
+
+    public static Intent newIntent(Context context, List<GenericItem> rateHistoryList, String currencyCode) {
 
         Intent intent = new Intent(context, PriceHistoryActivity.class);
         intent.putParcelableArrayListExtra(PriceHistoryActivity.EXTRA_RATE_HISTORY, new ArrayList<>(rateHistoryList));
+        intent.putExtra(EXTRA_CURRENCY_CODE, currencyCode);
 
         return intent;
     }
@@ -31,7 +35,7 @@ public class PriceHistoryActivity extends BaseSimpleActivity {
         getBundleArguments();
         super.onCreate(savedInstanceState);
 
-        setTitle(R.string.price_history_title);
+        setTitle(currencyCode + " " + R.string.price_history_title);
 
     }
 
@@ -47,6 +51,7 @@ public class PriceHistoryActivity extends BaseSimpleActivity {
 
         if (extras != null) {
             rateHistoryList = extras.getParcelableArrayListExtra(PriceHistoryActivity.EXTRA_RATE_HISTORY);
+            currencyCode = extras.getStringExtra(PriceHistoryActivity.EXTRA_CURRENCY_CODE);
         }
 
     }

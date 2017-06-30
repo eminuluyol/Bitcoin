@@ -20,6 +20,8 @@ public class CurrentPricePresenter extends BasePresenter<CurrentPriceView> {
         Injector.getInstance().getActivityComponent().inject(this);
     }
 
+    private String CURRENCY_CODE;
+
     void onRateHistoryRequested(RateUIModel rateUIModel) {
 
         getView().showProgress();
@@ -28,6 +30,7 @@ public class CurrentPricePresenter extends BasePresenter<CurrentPriceView> {
 
         request.setMarket("local");
         request.setSymbol("BTC" + rateUIModel.getCurrencyCode());
+        CURRENCY_CODE = rateUIModel.getCurrencyCode();
 
 //        Calendar cal = Calendar.getInstance();
 //        cal.add(Calendar.MONTH, -1);
@@ -59,7 +62,7 @@ public class CurrentPricePresenter extends BasePresenter<CurrentPriceView> {
 
             List<GenericItem> detailList = new ArrayList<>(rateHistoryUIModels);
 
-            getNavigator().toRateHistoryActivity(detailList).withAnimation(R.anim.right_in, R.anim.left_out).navigate();
+            getNavigator().toRateHistoryActivity(detailList, CURRENCY_CODE).withAnimation(R.anim.right_in, R.anim.left_out).navigate();
 
         }
 
