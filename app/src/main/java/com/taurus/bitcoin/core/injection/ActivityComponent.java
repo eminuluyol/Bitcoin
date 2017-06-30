@@ -1,6 +1,7 @@
 package com.taurus.bitcoin.core.injection;
 
 import com.taurus.bitcoin.core.NoOpPresenter;
+import com.taurus.bitcoin.currentprice.CurrentPricePresenter;
 import com.taurus.bitcoin.splash.SplashPresenter;
 
 import dagger.Subcomponent;
@@ -12,5 +13,7 @@ public interface ActivityComponent {
     void inject(NoOpPresenter noOpPresenter);
 
     void inject(SplashPresenter splashPresenter);
+
+    void inject(CurrentPricePresenter currentPricePresenter);
 
 }
