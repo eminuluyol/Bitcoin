@@ -1,17 +1,44 @@
 package com.taurus.bitcoin.network.model;
 
-import java.util.HashMap;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
 
 public class RateWrapper {
 
-    private HashMap<String, Rate> rateHashMap;
+    @SerializedName("time")
+    @Expose
+    private String time;
 
-    public HashMap<String, Rate> getRateHashMap() {
-        return rateHashMap;
+    @SerializedName("rates")
+    @Expose
+    private Rate rate;
+
+    private List<Rate> rateList;
+
+    public RateWrapper(List<Rate> rateList) {
+        this.rateList = rateList;
     }
 
-    public void setRateHashMap(HashMap<String, Rate> rateHashMap) {
-        this.rateHashMap = rateHashMap;
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public Rate getRate() {
+        return rate;
+    }
+
+    public void setRate(Rate rates) {
+        this.rate = rates;
+    }
+
+    public List<Rate> getRateList() {
+        return rateList;
     }
 
 }

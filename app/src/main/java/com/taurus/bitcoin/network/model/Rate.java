@@ -5,12 +5,23 @@ import com.google.gson.annotations.SerializedName;
 
 public class Rate {
 
+    private String currencyCode;
+
     @SerializedName("rate")
     @Expose
     private String rate;
+
     @SerializedName("name")
     @Expose
     private String name;
+
+    public String getCurrencyCode() {
+        return currencyCode;
+    }
+
+    public void setCurrencyCode(String currencyCode) {
+        this.currencyCode = currencyCode;
+    }
 
     public String getRate() {
         return rate;

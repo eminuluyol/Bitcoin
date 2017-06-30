@@ -19,5 +19,4 @@ public class ActivityModule {
         return activity;
     }
 
-
 }

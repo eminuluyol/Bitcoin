@@ -44,4 +44,24 @@ public class APIRestClient {
                 .build();
 
     }
+
+    static synchronized Retrofit getInstanceRx(Gson myGson) {
+
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging.setLevel(HttpLoggingInterceptor.Level.BASIC);
+
+        // client
+        OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
+                .connectTimeout(CONNECT_TIME_OUT, TimeUnit.SECONDS)
+                .readTimeout(READ_TIME_OUT, TimeUnit.SECONDS)
+                .addInterceptor(logging)
+                .build();
+
+        return new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(myGson))
+                .client(okHttpClient)
+                .build();
+    }
 }

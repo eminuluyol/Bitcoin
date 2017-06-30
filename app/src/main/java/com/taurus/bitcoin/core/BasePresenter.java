@@ -3,6 +3,7 @@ package com.taurus.bitcoin.core;
 import android.app.Application;
 
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
+import com.taurus.bitcoin.network.BitCoinApi;
 
 import javax.inject.Inject;
 
@@ -13,6 +14,9 @@ public abstract class BasePresenter<V extends BaseView> extends MvpBasePresenter
     @Inject
     Application application;
 
+    @Inject
+    BitCoinApi api;
+
     protected CompositeDisposable compositeDisposable;
 
     public BasePresenter(){
@@ -21,6 +25,10 @@ public abstract class BasePresenter<V extends BaseView> extends MvpBasePresenter
 
     public Application getApplication() {
         return application;
+    }
+
+    public BitCoinApi getApi() {
+        return api;
     }
 
     public void clearCompositeDisposable() {

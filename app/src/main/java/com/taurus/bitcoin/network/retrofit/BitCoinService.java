@@ -7,6 +7,6 @@ import retrofit2.http.GET;
 
 public interface BitCoinService {
 
-    @GET("/exchangerates/local")
+    @GET("/constants/exchangerates/local")
     Observable<RateWrapper> getCurrentRates();
 }

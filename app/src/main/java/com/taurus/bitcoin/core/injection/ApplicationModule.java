@@ -2,6 +2,9 @@ package com.taurus.bitcoin.core.injection;
 
 import android.app.Application;
 
+import com.taurus.bitcoin.network.BitCoinApi;
+import com.taurus.bitcoin.network.retrofit.RetrofitBitCoinApi;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -20,6 +23,12 @@ public class ApplicationModule {
     @Singleton
     public Application provideApplication() {
         return application;
+    }
+
+    @Provides
+    @Singleton
+    public BitCoinApi provideBitCoinApi() {
+        return new RetrofitBitCoinApi();
     }
 
 }
