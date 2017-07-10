@@ -33,27 +33,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextStyle.14.Black"
-                android:text="@string/currency_code"/>
-
-            <TextView
-                android:id="@+id/currentPriceTextViewCode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/TextStyle.16.Black"
-                android:paddingStart="@dimen/space_medium"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/space_tiny"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/TextStyle.14.Black"
                 android:text="@string/name"/>
 
             <TextView
@@ -81,7 +60,7 @@
                 android:id="@+id/currentPriceTextViewRate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextStyle.16.Black"
+                android:textAppearance="@style/TextStyle.18.Black.Bold"
                 android:paddingStart="@dimen/space_medium"/>
 
         </LinearLayout>

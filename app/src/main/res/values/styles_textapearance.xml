@@ -47,6 +47,12 @@
     <style name="TextStyle.18.Cyan">
         <item name="android:textColor">@color/cyan</item>
     </style>
+    <style name="TextStyle.18.Black">
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="TextStyle.18.Black.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
     <style name="TextStyle.18.Black54">
         <item name="android:textColor">@color/black54</item>
     </style>

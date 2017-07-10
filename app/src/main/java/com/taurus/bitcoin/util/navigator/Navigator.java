@@ -17,11 +17,7 @@ public class Navigator {
         this.activity = activity;
     }
 
-    public Navigation toCurrentPriceActivity(List<Rate> rateList) {
-        return new Navigation(activity, CurrentPriceActivity.newIntent(activity, rateList));
-    }
-
-    public Navigation toRateHistoryActivity(List<GenericItem> detailList, String currencyCode) {
-        return new Navigation(activity, PriceHistoryActivity.newIntent(activity, detailList, currencyCode));
+    public Navigation toRateHistoryActivity(String currencyCode) {
+        return new Navigation(activity, PriceHistoryActivity.newIntent(activity, currencyCode));
     }
 }

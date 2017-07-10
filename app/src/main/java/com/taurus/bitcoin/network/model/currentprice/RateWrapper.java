@@ -3,6 +3,8 @@ package com.taurus.bitcoin.network.model.currentprice;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import com.taurus.bitcoin.currentprice.adapter.model.RateUIModel;
+import com.taurus.bitcoin.util.ListConverter;
 import java.util.List;
 
 public class RateWrapper {
@@ -39,6 +41,21 @@ public class RateWrapper {
 
     public List<Rate> getRateList() {
         return rateList;
+    }
+
+    public static List<RateUIModel> createList(RateWrapper rateWrapper) {
+        return ListConverter.convert(rateWrapper.getRateList(), item -> create(item));
+    }
+
+    private static RateUIModel create(Rate item) {
+
+        final RateUIModel model = new RateUIModel();
+
+        model.setCurrencyCode(item.getCurrencyCode());
+        model.setName(item.getName());
+        model.setRate(item.getRate());
+
+        return model;
     }
 
 }

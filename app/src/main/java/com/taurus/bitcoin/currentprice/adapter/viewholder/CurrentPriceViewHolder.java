@@ -20,9 +20,6 @@ public class CurrentPriceViewHolder extends BaseViewHolder {
     @BindView(R.id.currentPriceCircularTextViewCurrency)
     CircularTextView circularTextViewCurrency;
 
-    @BindView(R.id.currentPriceTextViewCode)
-    TextView textViewCode;
-
     @BindView(R.id.currentPriceTextViewName)
     TextView textViewName;
 
@@ -46,7 +43,6 @@ public class CurrentPriceViewHolder extends BaseViewHolder {
         circularTextViewCurrency.setText(rateUIModel.getCurrencyCode());
         circularTextViewCurrency.setSolidColor(RandomColorGenetator.generateRandomColor());
 
-        textViewCode.setText(rateUIModel.getCurrencyCode());
         textViewName.setText(rateUIModel.getName());
         textViewRate.setText(rateUIModel.getRate());
 

@@ -23,81 +23,61 @@ import java.util.List;
 import butterknife.BindView;
 
 public class CurrentPriceFragment extends BaseFragment<CurrentPriceView, CurrentPricePresenter>
-        implements CurrentPriceView, OnItemClickListener {
+    implements CurrentPriceView, OnItemClickListener {
 
-    private static final String EXTRA_RATE = "rate";
-    private List<Rate> rateList;
+  @BindView(R.id.currentPriceRecyclerView)
+  RecyclerView currentPriceRecyclerView;
 
-    @BindView(R.id.currentPriceRecyclerView)
-    RecyclerView currentPriceRecyclerView;
+  @BindView(R.id.emptyView)
+  NestedScrollView emptyView;
 
-    @BindView(R.id.emptyView)
-    NestedScrollView emptyView;
+  private RecyclerAdapter currentPriceListAdapter;
 
-    private RecyclerAdapter currentPriceListAdapter;
+  public static CurrentPriceFragment newInstance() {
+    return new CurrentPriceFragment();
+  }
 
-    public static CurrentPriceFragment newInstance(List<Rate> rateList) {
+  @Override
+  protected int getLayoutResId() {
+    return R.layout.fragment_current_price;
+  }
 
-        Bundle args = new Bundle();
-        args.putParcelableArrayList(CurrentPriceFragment.EXTRA_RATE, (ArrayList<Rate>) rateList);
+  @NonNull
+  @Override
+  public CurrentPricePresenter createPresenter() {
+    return new CurrentPricePresenter();
+  }
 
-        CurrentPriceFragment fragment = new CurrentPriceFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
+  @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
 
-    @Override
-    protected int getLayoutResId() {
-        return R.layout.fragment_current_price;
-    }
+    currentPriceRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+    currentPriceListAdapter = RecyclerAdapter.with(new CurrentPriceAdapterDelegate(this));
+    currentPriceRecyclerView.setAdapter(currentPriceListAdapter);
+    getPresenter().onProgressBarShow();
+    getPresenter().onCurrentRatesRequested();
 
-    @NonNull
-    @Override
-    public CurrentPricePresenter createPresenter() {
-        return new CurrentPricePresenter();
-    }
+  }
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+  @Override
+  public void showEmptyView() {
+    emptyView.setVisibility(View.VISIBLE);
+  }
 
-        getBundleFromArgs();
+  @Override
+  public void hideEmptyView() {
+    emptyView.setVisibility(View.GONE);
+  }
 
-        if (rateList != null && !rateList.isEmpty()) {
+  @Override
+  public void showGetCurrenRateSuccess(List<GenericItem> data) {
+    currentPriceListAdapter.swapItems(data);
+  }
 
-            List<GenericItem> rateUIList = new ArrayList<>(RateUIModel.createList(rateList));
+  @Override
+  public void onItemClick(View view) {
+    RateUIModel rateUIModel = (RateUIModel) view.getTag();
+    getPresenter().onRateHistoryRequested(rateUIModel.getCurrencyCode());
+  }
 
-            currentPriceRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            currentPriceListAdapter = RecyclerAdapter.with(new CurrentPriceAdapterDelegate(this));
-            currentPriceRecyclerView.setAdapter(currentPriceListAdapter);
-            currentPriceListAdapter.swapItems(rateUIList);
-
-        }
-    }
-
-    private void getBundleFromArgs() {
-
-        Bundle args = getArguments();
-        if (args == null) return;
-        rateList = args.getParcelableArrayList(CurrentPriceFragment.EXTRA_RATE);
-
-    }
-
-    @Override
-    public void showEmptyView() {
-        emptyView.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void hideEmptyView() {
-        emptyView.setVisibility(View.GONE);
-    }
-
-    @Override
-    public void onItemClick(View view) {
-
-        RateUIModel rateUIModel = (RateUIModel) view.getTag();
-        getPresenter().onRateHistoryRequested(rateUIModel);
-
-    }
 }
