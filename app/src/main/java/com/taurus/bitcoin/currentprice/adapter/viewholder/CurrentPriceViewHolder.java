@@ -8,15 +8,17 @@ import android.widget.TextView;
 import com.taurus.bitcoin.R;
 import com.taurus.bitcoin.baseadapter.viewholder.BaseViewHolder;
 import com.taurus.bitcoin.currentprice.adapter.model.RateUIModel;
+import com.taurus.bitcoin.customview.CircularTextView;
 import com.taurus.bitcoin.listener.OnItemClickListener;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import com.taurus.bitcoin.util.RandomColorGenetator;
 
 public class CurrentPriceViewHolder extends BaseViewHolder {
 
-    @BindView(R.id.currentPriceTextViewCode)
-    TextView textViewCode;
+    @BindView(R.id.currentPriceCircularTextViewCurrency)
+    CircularTextView circularTextViewCurrency;
 
     @BindView(R.id.currentPriceTextViewName)
     TextView textViewName;
@@ -38,7 +40,9 @@ public class CurrentPriceViewHolder extends BaseViewHolder {
 
         this.rateUIModel = rateUIModel;
 
-        textViewCode.setText(rateUIModel.getCurrencyCode());
+        circularTextViewCurrency.setText(rateUIModel.getCurrencyCode());
+        circularTextViewCurrency.setSolidColor(RandomColorGenetator.generateRandomColor());
+
         textViewName.setText(rateUIModel.getName());
         textViewRate.setText(rateUIModel.getRate());
 

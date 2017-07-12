@@ -15,16 +15,13 @@ import java.util.List;
 
 public class PriceHistoryActivity extends BaseSimpleActivity {
 
-    private static final String EXTRA_RATE_HISTORY = "rate_history";
     private static final String EXTRA_CURRENCY_CODE = "currency_code";
 
-    private List<GenericItem> rateHistoryList;
     private String currencyCode;
 
-    public static Intent newIntent(Context context, List<GenericItem> rateHistoryList, String currencyCode) {
+    public static Intent newIntent(Context context, String currencyCode) {
 
         Intent intent = new Intent(context, PriceHistoryActivity.class);
-        intent.putParcelableArrayListExtra(PriceHistoryActivity.EXTRA_RATE_HISTORY, new ArrayList<>(rateHistoryList));
         intent.putExtra(EXTRA_CURRENCY_CODE, currencyCode);
 
         return intent;
@@ -36,13 +33,14 @@ public class PriceHistoryActivity extends BaseSimpleActivity {
         super.onCreate(savedInstanceState);
 
         setTitle(getResources().getString(R.string.price_history_title, currencyCode));
+        setHomeAsUpEnabled(true);
 
     }
 
     @Nullable
     @Override
     protected BaseFragment getContainedFragment() {
-        return PriceHistoryFragment.newInstance(rateHistoryList);
+        return PriceHistoryFragment.newInstance(currencyCode);
     }
 
     private void getBundleArguments() {
@@ -50,7 +48,6 @@ public class PriceHistoryActivity extends BaseSimpleActivity {
         Intent extras = getIntent();
 
         if (extras != null) {
-            rateHistoryList = extras.getParcelableArrayListExtra(PriceHistoryActivity.EXTRA_RATE_HISTORY);
             currencyCode = extras.getStringExtra(PriceHistoryActivity.EXTRA_CURRENCY_CODE);
         }
 

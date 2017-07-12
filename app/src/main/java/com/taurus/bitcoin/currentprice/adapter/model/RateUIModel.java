@@ -38,18 +38,4 @@ public class RateUIModel extends GenericItem {
         this.name = name;
     }
 
-    public static List<RateUIModel> createList(List<Rate> rateList) {
-        return ListConverter.convert(rateList, item -> create(item));
-    }
-
-    private static RateUIModel create(Rate item) {
-
-        final RateUIModel model = new RateUIModel();
-
-        model.setCurrencyCode(item.getCurrencyCode());
-        model.setName(item.getName());
-        model.setRate(item.getRate());
-
-        return model;
-    }
 }

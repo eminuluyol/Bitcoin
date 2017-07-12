@@ -6,11 +6,14 @@
     android:background="?attr/selectableItemBackground"
     android:orientation="horizontal" >
 
-    <ImageView
+    <com.taurus.bitcoin.customview.CircularTextView
+        android:id="@+id/currentPriceCircularTextViewCurrency"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@mipmap/ic_launcher"
-        android:layout_gravity="center_vertical"/>
+        android:layout_gravity="center_vertical"
+        android:textAppearance="@style/TextStyle.16.White"
+        android:gravity="center"
+        android:layout_marginStart="@dimen/space_medium"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,27 +22,6 @@
         android:gravity="center_vertical"
         android:paddingStart="@dimen/space_default"
         android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/space_tiny"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/TextStyle.14.Black"
-                android:text="@string/currency_code"/>
-
-            <TextView
-                android:id="@+id/currentPriceTextViewCode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/TextStyle.16.Black"
-                android:paddingStart="@dimen/space_medium"/>
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -78,7 +60,7 @@
                 android:id="@+id/currentPriceTextViewRate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextStyle.16.Black"
+                android:textAppearance="@style/TextStyle.18.Black.Bold"
                 android:paddingStart="@dimen/space_medium"/>
 
         </LinearLayout>

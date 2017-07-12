@@ -5,8 +5,8 @@ import com.taurus.bitcoin.baseadapter.model.GenericItem;
 import com.taurus.bitcoin.core.BasePresenter;
 import com.taurus.bitcoin.core.injection.Injector;
 import com.taurus.bitcoin.currentprice.adapter.model.RateUIModel;
-import com.taurus.bitcoin.network.model.pricehistory.PriceHistoryRequest;
-import com.taurus.bitcoin.pricehistory.adapter.RateHistoryUIModel;
+import com.taurus.bitcoin.network.model.currentprice.CurrentPriceRequest;
+import com.taurus.bitcoin.network.model.currentprice.RateWrapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,65 +16,57 @@ import io.reactivex.schedulers.Schedulers;
 
 public class CurrentPricePresenter extends BasePresenter<CurrentPriceView> {
 
+    private final String MARKET = "local";
+
     CurrentPricePresenter() {
         Injector.getInstance().getActivityComponent().inject(this);
     }
 
-    private String CURRENCY_CODE;
+    void onProgressBarShow() {
 
-    void onRateHistoryRequested(RateUIModel rateUIModel) {
+        if(isViewAttached()) {
 
-        getView().showProgress();
-
-        PriceHistoryRequest request = new PriceHistoryRequest();
-
-        request.setMarket("local");
-        request.setSymbol("BTC" + rateUIModel.getCurrencyCode());
-        CURRENCY_CODE = rateUIModel.getCurrencyCode();
-
-//        Calendar cal = Calendar.getInstance();
-//        cal.add(Calendar.MONTH, -1);
-//        Long timestamp = cal.getTimeInMillis();
-//
-//        request.setTimestamp(timestamp);
-        request.setPeriod("daily");
-        request.setFormat("json");
-
-        getApi().getCurrencyHistorySince(request)
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .map(RateHistoryUIModel::createList)
-                .subscribe(this::handleResponse, this::handleError);
-
-
-
+            getView().showProgress();
+        }
     }
 
-    private void handleResponse(List<RateHistoryUIModel> rateHistoryUIModels) {
+    void onProgressBarHide() {
 
         if(isViewAttached()) {
 
             getView().dismissProgress();
-
         }
+    }
 
-        if(rateHistoryUIModels.size() > 0) {
+    void onCurrentRatesRequested() {
 
-            List<GenericItem> detailList = new ArrayList<>(rateHistoryUIModels);
+        CurrentPriceRequest request = new CurrentPriceRequest(MARKET);
 
-            getNavigator().toRateHistoryActivity(detailList, CURRENCY_CODE).withAnimation(R.anim.right_in, R.anim.left_out).navigate();
+        getApi().getCurrentRates(request)
+            .subscribeOn(Schedulers.newThread())
+            .observeOn(AndroidSchedulers.mainThread())
+            .map(RateWrapper::createList)
+            .subscribe(this::handleResponse, this::handleError);
 
-        }
+    }
+
+    private void handleResponse(List<RateUIModel> rateUIModels) {
+
+        onProgressBarHide();
+
+        List<GenericItem> data = new ArrayList<>(rateUIModels);
+        getView().showGetCurrenRateSuccess(data);
 
     }
 
     private void handleError(Throwable throwable) {
 
-        if(isViewAttached()) {
+        onProgressBarHide();
+        getView().showError(throwable.getMessage());
 
-            getView().dismissProgress();
+    }
 
-        }
-
+    void onRateHistoryRequested(String currencyCode) {
+        getNavigator().toRateHistoryActivity(currencyCode).withAnimation(R.anim.right_in, R.anim.left_out).navigate();
     }
 }
