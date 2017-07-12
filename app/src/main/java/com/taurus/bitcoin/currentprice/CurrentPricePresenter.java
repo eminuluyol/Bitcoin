@@ -6,10 +6,7 @@ import com.taurus.bitcoin.core.BasePresenter;
 import com.taurus.bitcoin.core.injection.Injector;
 import com.taurus.bitcoin.currentprice.adapter.model.RateUIModel;
 import com.taurus.bitcoin.network.model.currentprice.CurrentPriceRequest;
-import com.taurus.bitcoin.network.model.currentprice.Rate;
 import com.taurus.bitcoin.network.model.currentprice.RateWrapper;
-import com.taurus.bitcoin.network.model.pricehistory.PriceHistoryRequest;
-import com.taurus.bitcoin.pricehistory.adapter.RateHistoryUIModel;
 
 import java.util.ArrayList;
 import java.util.List;

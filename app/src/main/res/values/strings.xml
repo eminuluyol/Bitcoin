@@ -10,6 +10,10 @@
 
     <!-- Price History -->
     <string name="time">Time:</string>
-    <string name="average">Avarage:</string>
+    <string name="average">Average:</string>
     <string name="price_history_title">%1$s Price History</string>
+  <string name="rate_history_chart_title">Average Price History Chart of Last 15 Hours</string>
+    <string name="no_data">No Data</string>
+    <string name="min">%1$s hour</string>
+  <string name="rate_history_list_title">Monthly Average Price History By Hour</string>
 </resources>

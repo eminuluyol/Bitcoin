@@ -34,6 +34,9 @@
     <style name="TextStyle.16.Black">
         <item name="android:textColor">@color/black</item>
     </style>
+    <style name="TextStyle.16.Black.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
     <style name="TextStyle.16.White">
         <item name="android:textColor">@color/white</item>
     </style>

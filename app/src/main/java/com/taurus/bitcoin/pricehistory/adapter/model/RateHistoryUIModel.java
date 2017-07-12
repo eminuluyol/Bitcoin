@@ -1,4 +1,4 @@
-package com.taurus.bitcoin.pricehistory.adapter;
+package com.taurus.bitcoin.pricehistory.adapter.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;

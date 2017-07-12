@@ -1,4 +1,4 @@
-package com.taurus.bitcoin.pricehistory.adapter;
+package com.taurus.bitcoin.pricehistory.adapter.delegate;
 
 import android.support.annotation.NonNull;
 import android.view.ViewGroup;
@@ -7,10 +7,11 @@ import com.taurus.bitcoin.R;
 import com.taurus.bitcoin.baseadapter.BaseAdapterDelegate;
 import com.taurus.bitcoin.baseadapter.model.GenericItem;
 
+import com.taurus.bitcoin.pricehistory.adapter.model.RateHistoryUIModel;
+import com.taurus.bitcoin.pricehistory.adapter.viewholder.RateHistoryViewHolder;
 import java.util.List;
 
-public class RateHistoryAdapterDelegate extends BaseAdapterDelegate<RateHistoryUIModel, GenericItem,
-        RateHistoryViewHolder> {
+public class RateHistoryAdapterDelegate extends BaseAdapterDelegate<RateHistoryUIModel, GenericItem, RateHistoryViewHolder> {
 
     @Override
     protected boolean isForViewType(@NonNull GenericItem item, @NonNull List<GenericItem> items, int position) {

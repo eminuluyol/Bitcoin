@@ -5,18 +5,15 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 
-import android.view.ViewGroup;
 import com.taurus.bitcoin.R;
 import com.taurus.bitcoin.baseadapter.RecyclerAdapter;
 import com.taurus.bitcoin.baseadapter.model.GenericItem;
 import com.taurus.bitcoin.core.BaseFragment;
-import com.taurus.bitcoin.core.BaseSimpleFragment;
-import com.taurus.bitcoin.pricehistory.adapter.RateHistoryAdapterDelegate;
+import com.taurus.bitcoin.pricehistory.adapter.delegate.RateHistoryAdapterDelegate;
 
-import java.util.ArrayList;
+import com.taurus.bitcoin.pricehistory.adapter.delegate.RateHistoryChartAdapterDelegate;
 import java.util.List;
 
 import butterknife.BindView;
@@ -59,7 +56,8 @@ public class PriceHistoryFragment extends BaseFragment<PriceHistoryView, PriceHi
     getBundleFromArgs();
 
     priceHistoryRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-    rateHistoryAdapter = RecyclerAdapter.with(new RateHistoryAdapterDelegate());
+    rateHistoryAdapter = RecyclerAdapter.with(new RateHistoryAdapterDelegate(),
+        new RateHistoryChartAdapterDelegate());
     priceHistoryRecyclerView.setAdapter(rateHistoryAdapter);
     getPresenter().onRateHistoryRequested(currencyCode);
 

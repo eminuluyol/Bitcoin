@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
+import com.taurus.bitcoin.pricehistory.adapter.model.RateHistoryChartUIModel;
 
 public abstract class BaseViewHolder extends RecyclerView.ViewHolder {
 

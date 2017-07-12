@@ -1,11 +1,12 @@
 package com.taurus.bitcoin.pricehistory;
 
-import com.taurus.bitcoin.R;
 import com.taurus.bitcoin.baseadapter.model.GenericItem;
 import com.taurus.bitcoin.core.BasePresenter;
 import com.taurus.bitcoin.core.injection.Injector;
 import com.taurus.bitcoin.network.model.pricehistory.PriceHistoryRequest;
-import com.taurus.bitcoin.pricehistory.adapter.RateHistoryUIModel;
+import com.taurus.bitcoin.pricehistory.adapter.model.LineObject;
+import com.taurus.bitcoin.pricehistory.adapter.model.RateHistoryChartUIModel;
+import com.taurus.bitcoin.pricehistory.adapter.model.RateHistoryUIModel;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import java.util.ArrayList;
@@ -51,7 +52,7 @@ public class PriceHistoryPresenter extends BasePresenter<PriceHistoryView> {
     //        Long timestamp = cal.getTimeInMillis();
     //
     //        request.setTimestamp(timestamp);
-    request.setPeriod("daily");
+    request.setPeriod("monthly");
     request.setFormat("json");
 
     getApi().getCurrencyHistorySince(request)
@@ -71,11 +72,36 @@ public class PriceHistoryPresenter extends BasePresenter<PriceHistoryView> {
       }
 
       if(rateHistoryUIModels.size() > 0) {
-
-         List<GenericItem> detailList = new ArrayList<>(rateHistoryUIModels);
-         getView().showGetHistorySuccess(detailList);
+        prepareUIModelForAdapter(rateHistoryUIModels);
       }
 
+  }
+
+  private void prepareUIModelForAdapter(List<RateHistoryUIModel> rateHistoryUIModels) {
+
+    // In order to start the graphic from 0
+    LineObject lineObject = new LineObject();
+    lineObject.setRateHistoryValue(0);
+
+    List<LineObject> lineObjects = new ArrayList<>();
+    lineObjects.add(lineObject);
+
+    for(int i = 0; i < 15; i++) {
+
+      LineObject lineItem = new LineObject();
+      lineItem.setRateHistoryValue(Float.parseFloat(rateHistoryUIModels.get(i).getAverage()));
+
+      lineObjects.add(lineItem);
+
+    }
+
+    RateHistoryChartUIModel rateHistoryChartUIModel = new RateHistoryChartUIModel();
+    rateHistoryChartUIModel.setLineObjects(lineObjects);
+
+    List<GenericItem> detailList = new ArrayList<>();
+    detailList.add(rateHistoryChartUIModel);
+    detailList.addAll(rateHistoryUIModels);
+    getView().showGetHistorySuccess(detailList);
   }
 
   private void handleError(Throwable throwable) {
@@ -87,5 +113,7 @@ public class PriceHistoryPresenter extends BasePresenter<PriceHistoryView> {
       }
 
   }
+
+
 
 }
