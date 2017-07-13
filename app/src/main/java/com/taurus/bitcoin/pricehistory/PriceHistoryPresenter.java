@@ -79,12 +79,7 @@ public class PriceHistoryPresenter extends BasePresenter<PriceHistoryView> {
 
   private void prepareUIModelForAdapter(List<RateHistoryUIModel> rateHistoryUIModels) {
 
-    // In order to start the graphic from 0
-    LineObject lineObject = new LineObject();
-    lineObject.setRateHistoryValue(0);
-
     List<LineObject> lineObjects = new ArrayList<>();
-    lineObjects.add(lineObject);
 
     for(int i = 0; i < 15; i++) {
 
